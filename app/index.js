@@ -1,5 +1,7 @@
 const p = require("inquirer");
 const svg = require("./lib/SVG");
+const s = require("./lib/Shapes");
+const { Square, Triangle, Circle } = require("./lib/Shapes");
 
 const ColorKeyWords = [
     { name: "Black", value: "#000000"},
@@ -55,6 +57,23 @@ p
         },]
     )
     .then((ans) => {
-        console.log(`User Requested a logo with text: ${ans.text} that is ${ans.textColorCustom ? ans.textColorCustom : ans.textColor} that is in a ${ans.shape} that is ${ans.shapeColorCustom ? ans.shapeColorCustom : ans.shapeColor}`)
+        console.log(GenerateShape(ans.shape, ans.shapeColorCustom ? ans.shapeColorCustom : ans.shapeColor, ans.text, ans.textColorCustom ? ans.textColorCustom : ans.textColor).render());
     });
 
+
+function GenerateShape(shape, color, text, textColor) {
+    shape = shape.toLowerCase();
+    let newShape = null;
+
+    if (shape === "square") {
+        newShape = new s.Square(text, textColor, color);
+    } else if (shape === "triangle") {
+        newShape = new s.Triangle(text, textColor, color);
+    } else if (shape === "circle") {
+        newShape = new s.Circle(text, textColor, color);
+    } else {
+        console.log(`${shape} is not a valid shape`);
+    }
+
+    return newShape;
+}
