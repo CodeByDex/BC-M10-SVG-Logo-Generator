@@ -2,6 +2,8 @@ const p = require("inquirer");
 const svg = require("./lib/SVG");
 const s = require("./lib/Shapes");
 const { Square, Triangle, Circle } = require("./lib/Shapes");
+const width = 300;
+const height = 200;
 
 const ColorKeyWords = [
     { name: "Black", value: "#000000"},
@@ -66,11 +68,11 @@ function GenerateShape(shape, color, text, textColor) {
     let newShape = null;
 
     if (shape === "square") {
-        newShape = new s.Square(text, textColor, color);
+        newShape = new s.Square(text, textColor, color, height, width);
     } else if (shape === "triangle") {
-        newShape = new s.Triangle(text, textColor, color);
+        newShape = new s.Triangle(text, textColor, color, height, width);
     } else if (shape === "circle") {
-        newShape = new s.Circle(text, textColor, color);
+        newShape = new s.Circle(text, textColor, color, height);
     } else {
         console.log(`${shape} is not a valid shape`);
     }
