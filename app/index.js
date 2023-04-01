@@ -1,11 +1,13 @@
 const p = require("inquirer");
+const svg = require("./lib/SVG");
 
 p
     .prompt(
         [{
             name: "text",
             message: "What is the logo text?",
-            type: "input"
+            type: "input",
+            validate: svg.IsLogoTextValid
         },{
             name: "textColor",
             message: "What is the logo text's color?",
@@ -40,3 +42,4 @@ p
     .then((ans) => {
         console.log(`User Requested a logo with text: ${ans.text} that is ${ans.textColorCustom ? ans.textColorCustom : ans.textColor} that is in a ${ans.shape} that is ${ans.shapeColorCustom ? ans.shapeColorCustom : ans.shapeColor}`)
     });
+
