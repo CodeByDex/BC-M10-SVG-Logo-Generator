@@ -3,7 +3,6 @@ const svg = require("./lib/SVG");
 const s = require("./lib/Shapes");
 const io = require("./lib/IO");
 
-const { Square, Triangle, Circle } = require("./lib/Shapes");
 const width = 300;
 const height = 200;
 
