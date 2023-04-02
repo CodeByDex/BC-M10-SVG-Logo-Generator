@@ -53,9 +53,9 @@ describe("SVG Test Cases", () => {
         })
     })
 
-    describe("SVG Render", () =>{
+    describe("SVG Render", () => {
         it("Should return expect svg content", () => {
-            expect(svg.RenderSVG(1,1,"foo").replaceAll(" ", "")).toEqual(`<svg version="1.1" 
+            expect(svg.RenderSVG(1, 1, "foo").replaceAll(" ", "")).toEqual(`<svg version="1.1" 
             width="1" 
             height="1" 
             xmlns="http://www.w3.org/2000/svg">

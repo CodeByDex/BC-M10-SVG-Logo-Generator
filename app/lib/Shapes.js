@@ -1,18 +1,18 @@
 class Shape {
     fontSizeFactor = 1.5;
 
-    constructor(text, textColor, color, shape, height, width){
+    constructor(text, textColor, color, shape, height, width) {
         this.Text = text,
-        this.TextColor = textColor,
-        this.Color = color,
-        this.Shape = shape,
-        this.Height = height,
-        this.Width = width
+            this.TextColor = textColor,
+            this.Color = color,
+            this.Shape = shape,
+            this.Height = height,
+            this.Width = width
     };
 
-    render(xPos, yPos){
-        if (xPos === undefined) xPos = this.Width/2;
-        if (yPos === undefined) yPos = this.Height/2;
+    render(xPos, yPos) {
+        if (xPos === undefined) xPos = this.Width / 2;
+        if (yPos === undefined) yPos = this.Height / 2;
 
         return `${this.renderShape(xPos, yPos)}
 
@@ -24,7 +24,7 @@ class Shape {
         return `<text 
         x="${xPos}" 
         y="${yPos}"
-        font-size="${this.Width/this.Text.length*this.fontSizeFactor}"
+        font-size="${this.Width / this.Text.length * this.fontSizeFactor}"
         text-anchor="middle"
         dominant-baseline="middle"
         fill="${this.TextColor}">
@@ -37,7 +37,7 @@ class Shape {
     }
 };
 
-class Triangle extends Shape{
+class Triangle extends Shape {
     constructor(text, textColor, color, height, width) {
         super(text, textColor, color, "triange", height, width);
         this.fontSizeFactor = .625;
@@ -47,23 +47,23 @@ class Triangle extends Shape{
      * points parameter coordinate 0,0 will be the top left corner
      * @returns text for shape element of an svg
      **/
-    renderShape(xPos, yPos){
-        let xAdj = xPos - (this.Width/2)
-        let yAdj = yPos - (this.Height/2)
+    renderShape(xPos, yPos) {
+        let xAdj = xPos - (this.Width / 2)
+        let yAdj = yPos - (this.Height / 2)
         return `<polygon 
-        points="${0+xAdj}, ${this.Height+yAdj} ${(this.Width/2) + xAdj}, ${0+yAdj} ${this.Width+xAdj}, ${this.Height+yAdj}"
+        points="${0 + xAdj}, ${this.Height + yAdj} ${(this.Width / 2) + xAdj}, ${0 + yAdj} ${this.Width + xAdj}, ${this.Height + yAdj}"
         fill="${this.Color}"
         />`;
     }
 }
 
-class Circle extends Shape{
+class Circle extends Shape {
     constructor(text, textColor, color, radius) {
         super(text, textColor, color, "circle", radius * 2, radius * 2);
         this.Radius = radius;
     }
 
-    renderShape(xPos, yPos){
+    renderShape(xPos, yPos) {
         return `<circle
         cx="${xPos}"
         cy="${yPos}"
@@ -73,14 +73,14 @@ class Circle extends Shape{
     }
 }
 
-class Square extends Shape{
+class Square extends Shape {
     constructor(text, textColor, color, height) {
         super(text, textColor, color, "square", height, height);
     }
 
-    renderShape(xPos, yPos){
-        xPos = (xPos - this.Width/2)
-        yPos = (yPos - this.Height/2) 
+    renderShape(xPos, yPos) {
+        xPos = (xPos - this.Width / 2)
+        yPos = (yPos - this.Height / 2)
         return `<rect
         x="${xPos}"
         y="${yPos}"

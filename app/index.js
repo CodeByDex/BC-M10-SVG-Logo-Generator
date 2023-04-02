@@ -7,16 +7,16 @@ const width = 300;
 const height = 200;
 
 const ColorKeyWords = [
-    { name: "Black", value: "#000000"},
-    { name: "White", value: "#FFFFFF"},
-    { name: "Red", value: "#FF0000"},
-    { name: "Orange", value: "#ffa500"},
-    { name: "Yellow", value: "#FFFF00"},
-    { name: "Green", value: "#008000"},
-    { name: "Blue", value: "#0000FF"},
-    { name: "Indigo", value: "#4b0082"},
-    { name: "Violet", value: "#ee82ee"},
-    { name: "Custom", value: "Custom"}
+    { name: "Black", value: "#000000" },
+    { name: "White", value: "#FFFFFF" },
+    { name: "Red", value: "#FF0000" },
+    { name: "Orange", value: "#ffa500" },
+    { name: "Yellow", value: "#FFFF00" },
+    { name: "Green", value: "#008000" },
+    { name: "Blue", value: "#0000FF" },
+    { name: "Indigo", value: "#4b0082" },
+    { name: "Violet", value: "#ee82ee" },
+    { name: "Custom", value: "Custom" }
 ]
 
 p
@@ -26,12 +26,12 @@ p
             message: "What is the logo text?",
             type: "input",
             validate: svg.IsLogoTextValid
-        },{
+        }, {
             name: "textColor",
             message: "What is the logo text's color?",
             type: "list",
             choices: ColorKeyWords
-        },{
+        }, {
             name: "textColorCustom",
             message: "Please Enter a Hex Color Value",
             type: "input",
@@ -39,17 +39,17 @@ p
                 return ans.textColor === "Custom";
             },
             validate: svg.IsValidHexColor
-        },{
+        }, {
             name: "shape",
             message: "What is the logo shape",
             type: "list",
             choices: ["Triangle", "Square", "Circle"]
-        },{
+        }, {
             name: "shapeColor",
             message: "What is the logo background color?",
             type: "list",
             choices: ColorKeyWords
-        },{
+        }, {
             name: "shapeColorCustom",
             message: "Please Enter a Hex Color Value",
             type: "input",
@@ -61,7 +61,7 @@ p
     )
     .then((ans) => {
         let reqShape = GenerateShape(ans.shape, ans.shapeColorCustom ? ans.shapeColorCustom : ans.shapeColor, ans.text, ans.textColorCustom ? ans.textColorCustom : ans.textColor);
-        let svgContnet = svg.RenderSVG(height, width, reqShape.render(width/2, height/2))
+        let svgContnet = svg.RenderSVG(height, width, reqShape.render(width / 2, height / 2))
         // console.log(reqShape.render());
         io.StandardOut(svgContnet)
         console.log("Please Check for generated SVG");
@@ -74,11 +74,11 @@ function GenerateShape(shape, color, text, textColor) {
     const shapeShrink = 0.9
 
     if (shape === "square") {
-        newShape = new s.Square(text, textColor, color, height*shapeShrink, width*shapeShrink);
+        newShape = new s.Square(text, textColor, color, height * shapeShrink, width * shapeShrink);
     } else if (shape === "triangle") {
-        newShape = new s.Triangle(text, textColor, color, height*shapeShrink, width*shapeShrink);
+        newShape = new s.Triangle(text, textColor, color, height * shapeShrink, width * shapeShrink);
     } else if (shape === "circle") {
-        newShape = new s.Circle(text, textColor, color, height/2*shapeShrink);
+        newShape = new s.Circle(text, textColor, color, height / 2 * shapeShrink);
     } else {
         console.log(`${shape} is not a valid shape`);
     }
