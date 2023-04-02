@@ -1,4 +1,6 @@
 class Shape {
+    fontSizeFactor = 1.5;
+
     constructor(text, textColor, color, shape, height, width){
         this.Text = text,
         this.TextColor = textColor,
@@ -22,8 +24,9 @@ class Shape {
         return `<text 
         x="${xPos}" 
         y="${yPos}"
-        fount-size="60"
+        font-size="${this.Width/this.Text.length*this.fontSizeFactor}"
         text-anchor="middle"
+        dominant-baseline="middle"
         fill="${this.TextColor}">
         ${this.Text}
         </text>`;
@@ -37,6 +40,7 @@ class Shape {
 class Triangle extends Shape{
     constructor(text, textColor, color, height, width) {
         super(text, textColor, color, "triange", height, width);
+        this.fontSizeFactor = .625;
     }
 
     /**
