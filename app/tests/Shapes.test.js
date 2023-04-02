@@ -6,10 +6,10 @@ const textColor = "txtCol";
 const xPos = 10;
 const yPos = 20;
 
-describe("Circle Tests", ()=>{
+describe("Circle Tests", () => {
     const rad = 1;
     const shape = new s.Circle(text, textColor, color, rad)
-    
+
     it("Color Set", () => {
         expect(shape.Color).toEqual(color);
     })
@@ -38,15 +38,15 @@ describe("Circle Tests", ()=>{
     })
 })
 
-describe("Triangle Tests", ()=>{
+describe("Triangle Tests", () => {
     const text = "Foobar";
     const color = "col";
     const textColor = "txtCol";
     const height = 1;
     const width = 2;
 
-    const shape = new s.Triangle(text, textColor, color, height, width )
-    
+    const shape = new s.Triangle(text, textColor, color, height, width)
+
     it("Color Set", () => {
         expect(shape.Color).toEqual(color);
     })
@@ -70,14 +70,14 @@ describe("Triangle Tests", ()=>{
 
 })
 
-describe("Square Tests", ()=>{
+describe("Square Tests", () => {
     const text = "Foobar";
     const color = "col";
     const textColor = "txtCol";
     const height = 1;
 
     const shape = new s.Square(text, textColor, color, height)
-    
+
     it("Color Set", () => {
         expect(shape.Color).toEqual(color);
     })
