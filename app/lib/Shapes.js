@@ -36,10 +36,14 @@ class Triangle extends Shape{
         super(text, textColor, color, "triange", height, width);
     }
 
+    /**
+     * points parameter coordinate 0,0 will be the top left corner
+     * @returns text for shape element of an svg
+     **/
     renderShape(){
         return `<polygon 
-        points: "0, 0 ${this.Height}, ${this.Width/2} 0, ${this.Width}"
-        fill=""
+        points="0, ${this.Height} ${this.Width/2}, 0 ${this.Width}, ${this.Height}"
+        fill="${this.Color}"
         />`;
     }
 }
@@ -52,8 +56,8 @@ class Circle extends Shape{
 
     renderShape(){
         return `<circle
-        cx=""
-        cy=""
+        cx="${this.Radius}"
+        cy="${this.Radius}"
         r="${this.Radius}"
         fill="${this.Color}"
         />`;

@@ -59,20 +59,23 @@ p
         },]
     )
     .then((ans) => {
-        console.log(GenerateShape(ans.shape, ans.shapeColorCustom ? ans.shapeColorCustom : ans.shapeColor, ans.text, ans.textColorCustom ? ans.textColorCustom : ans.textColor).render());
+        let reqShape = GenerateShape(ans.shape, ans.shapeColorCustom ? ans.shapeColorCustom : ans.shapeColor, ans.text, ans.textColorCustom ? ans.textColorCustom : ans.textColor);
+        console.log(svg.RenderSVG(height, width, () => reqShape.render()));
+        // console.log(reqShape.render());
     });
 
 
 function GenerateShape(shape, color, text, textColor) {
     shape = shape.toLowerCase();
     let newShape = null;
+    const shapeShrink = 0.9
 
     if (shape === "square") {
-        newShape = new s.Square(text, textColor, color, height, width);
+        newShape = new s.Square(text, textColor, color, height*shapeShrink, width*shapeShrink);
     } else if (shape === "triangle") {
-        newShape = new s.Triangle(text, textColor, color, height, width);
+        newShape = new s.Triangle(text, textColor, color, height*shapeShrink, width*shapeShrink);
     } else if (shape === "circle") {
-        newShape = new s.Circle(text, textColor, color, height);
+        newShape = new s.Circle(text, textColor, color, height/2*shapeShrink);
     } else {
         console.log(`${shape} is not a valid shape`);
     }

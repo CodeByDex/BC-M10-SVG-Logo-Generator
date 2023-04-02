@@ -13,7 +13,7 @@ function IsValidHexColor(hex) {
     return true;
 }
 
-function RenderOuterSVG(height, width, innerSVG) 
+function RenderSVG(height, width, innerSVG) 
 {
     return `<svg version="1.1" 
     width="${width}" 
@@ -27,5 +27,6 @@ function RenderOuterSVG(height, width, innerSVG)
 
 module.exports = {
     IsLogoTextValid: IsLogoTextValid,
-    IsValidHexColor: IsValidHexColor
+    IsValidHexColor: IsValidHexColor,
+    RenderSVG:RenderSVG
 }
