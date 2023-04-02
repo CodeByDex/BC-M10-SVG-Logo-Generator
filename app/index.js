@@ -1,10 +1,19 @@
+/********************************************************
+ * Required Modules
+ ********************************************************/
 const p = require("inquirer");
 const svg = require("./lib/SVG");
 const s = require("./lib/Shapes");
 const io = require("./lib/IO");
 
+/*******************************************************
+ * Constants
+ *******************************************************/
+//Total SVG Size
 const width = 300;
 const height = 200;
+//Adjust shape size relative to SVG Size
+const shapeShrink = 0.9
 
 const ColorKeyWords = [
     { name: "Black", value: "#000000" },
@@ -19,6 +28,9 @@ const ColorKeyWords = [
     { name: "Custom", value: "Custom" }
 ]
 
+/*****************************************************
+ * Program Executions
+ *****************************************************/
 p
     .prompt(
         [{
@@ -67,11 +79,20 @@ p
         console.log("Please Check for generated SVG");
     });
 
-
+/************************************************************
+ * Methods
+ ************************************************************/
+/**
+ * Method that will generate a shape with the specified properties
+ * @param {string} shape //shape type to create
+ * @param {String} color //Hex value
+ * @param {string} text 
+ * @param {String} textColor //Hex Value
+ * @returns an instances of a shape object
+ */
 function GenerateShape(shape, color, text, textColor) {
     shape = shape.toLowerCase();
     let newShape = null;
-    const shapeShrink = 0.9
 
     if (shape === "square") {
         newShape = new s.Square(text, textColor, color, height * shapeShrink, width * shapeShrink);
