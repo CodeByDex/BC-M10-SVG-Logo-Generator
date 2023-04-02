@@ -59,10 +59,10 @@ class Circle extends Shape{
         this.Radius = radius;
     }
 
-    renderShape(){
+    renderShape(xPos, yPos){
         return `<circle
-        cx="${this.Radius}"
-        cy="${this.Radius}"
+        cx="${xPos}"
+        cy="${yPos}"
         r="${this.Radius}"
         fill="${this.Color}"
         />`;
