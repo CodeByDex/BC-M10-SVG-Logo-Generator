@@ -20,7 +20,7 @@ function RenderSVG(height, width, innerSVG)
     height="${height}" 
     xmlns="http://www.w3.org/2000/svg">
     
-    ${innerSVG(height, width)}
+    ${innerSVG}
     
     </svg>`
 }

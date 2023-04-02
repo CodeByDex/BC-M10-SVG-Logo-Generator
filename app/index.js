@@ -3,7 +3,6 @@ const svg = require("./lib/SVG");
 const s = require("./lib/Shapes");
 const io = require("./lib/IO");
 
-const { Square, Triangle, Circle } = require("./lib/Shapes");
 const width = 300;
 const height = 200;
 
@@ -62,7 +61,7 @@ p
     )
     .then((ans) => {
         let reqShape = GenerateShape(ans.shape, ans.shapeColorCustom ? ans.shapeColorCustom : ans.shapeColor, ans.text, ans.textColorCustom ? ans.textColorCustom : ans.textColor);
-        let svgContnet = svg.RenderSVG(height, width, () => reqShape.render(width/2, height/2))
+        let svgContnet = svg.RenderSVG(height, width, reqShape.render(width/2, height/2))
         // console.log(reqShape.render());
         io.StandardOut(svgContnet)
         console.log("Please Check for generated SVG");
