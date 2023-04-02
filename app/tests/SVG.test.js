@@ -37,19 +37,32 @@ describe("SVG Test Cases", () => {
 
     describe("Invalid Hex Colors", () => {
         it("should return false if the hex value contains invalid characters", () => {
-            expect(svg.IsLogoTextValid("#12345z")).toEqual(false);
+            expect(svg.IsValidHexColor("#12345z")).toEqual(false);
         })
 
         it("should return false if the hex value is too short", () => {
-            expect(svg.IsLogoTextValid("#12345")).toEqual(false);
+            expect(svg.IsValidHexColor("#12345")).toEqual(false);
         })
 
         it("should return false if the hex value is too long", () => {
-            expect(svg.IsLogoTextValid("#1234567")).toEqual(false);
+            expect(svg.IsValidHexColor("#1234567")).toEqual(false);
         })
 
         it("should return false if the hex value is missing #", () => {
-            expect(svg.IsLogoTextValid("1234567")).toEqual(false);
+            expect(svg.IsValidHexColor("1234567")).toEqual(false);
+        })
+    })
+
+    describe("SVG Render", () =>{
+        it("Should return expect svg content", () => {
+            expect(svg.RenderSVG(1,1,"foo").replaceAll(" ", "")).toEqual(`<svg version="1.1" 
+            width="1" 
+            height="1" 
+            xmlns="http://www.w3.org/2000/svg">
+            
+            foo
+            
+            </svg>`.replaceAll(" ", ""))
         })
     })
 })
