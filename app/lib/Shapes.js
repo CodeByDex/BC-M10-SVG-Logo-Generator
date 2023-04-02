@@ -74,8 +74,12 @@ class Square extends Shape{
         super(text, textColor, color, "square", height, height);
     }
 
-    renderShape(){
+    renderShape(xPos, yPos){
+        xPos = (xPos - this.Width/2)
+        yPos = (yPos - this.Height/2) 
         return `<rect
+        x="${xPos}"
+        y="${yPos}"
         width="${this.Width}"
         height="${this.Height}"
         fill="${this.Color}"
