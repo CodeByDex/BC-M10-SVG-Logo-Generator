@@ -8,17 +8,20 @@ class Shape {
         this.Width = width
     };
 
-    render() {
-        return `${this.renderShape()}
+    render(xPos, yPos){
+        if (xPos === undefined) xPos = this.Width/2;
+        if (yPos === undefined) yPos = this.Height/2;
 
-        ${this.renderText()}
+        return `${this.renderShape(xPos, yPos)}
+
+        ${this.renderText(xPos, yPos)}
         `;
     }
 
-    renderText() {
+    renderText(xPos, yPos) {
         return `<text 
-        x="${this.Width/2}" 
-        y="${this.Height/2}"
+        x="${xPos}" 
+        y="${yPos}"
         fount-size="60"
         text-anchor="middle"
         fill="${this.TextColor}">
@@ -26,7 +29,7 @@ class Shape {
         </text>`;
     };
 
-    renderShape() {
+    renderShape(xPos, yPos) {
         throw new Error("Must Be Implemented in Child Class");
     }
 };
@@ -40,9 +43,11 @@ class Triangle extends Shape{
      * points parameter coordinate 0,0 will be the top left corner
      * @returns text for shape element of an svg
      **/
-    renderShape(){
+    renderShape(xPos, yPos){
+        let xAdj = xPos - (this.Width/2)
+        let yAdj = yPos - (this.Height/2)
         return `<polygon 
-        points="0, ${this.Height} ${this.Width/2}, 0 ${this.Width}, ${this.Height}"
+        points="${0+xAdj}, ${this.Height+yAdj} ${(this.Width/2) + xAdj}, ${0+yAdj} ${this.Width+xAdj}, ${this.Height+yAdj}"
         fill="${this.Color}"
         />`;
     }
@@ -54,10 +59,10 @@ class Circle extends Shape{
         this.Radius = radius;
     }
 
-    renderShape(){
+    renderShape(xPos, yPos){
         return `<circle
-        cx="${this.Radius}"
-        cy="${this.Radius}"
+        cx="${xPos}"
+        cy="${yPos}"
         r="${this.Radius}"
         fill="${this.Color}"
         />`;
@@ -69,8 +74,12 @@ class Square extends Shape{
         super(text, textColor, color, "square", height, height);
     }
 
-    renderShape(){
+    renderShape(xPos, yPos){
+        xPos = (xPos - this.Width/2)
+        yPos = (yPos - this.Height/2) 
         return `<rect
+        x="${xPos}"
+        y="${yPos}"
         width="${this.Width}"
         height="${this.Height}"
         fill="${this.Color}"
