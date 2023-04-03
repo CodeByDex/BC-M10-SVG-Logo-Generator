@@ -76,7 +76,7 @@ p
         let svgContnet = svg.RenderSVG(height, width, reqShape.render(width / 2, height / 2))
         // console.log(reqShape.render());
         io.StandardOut(svgContnet)
-        console.log("Please Check for generated SVG");
+        console.log("Generated logo.svg");
     });
 
 /************************************************************
@@ -85,9 +85,9 @@ p
 /**
  * Method that will generate a shape with the specified properties
  * @param {string} shape //shape type to create
- * @param {String} color //Hex value
+ * @param {string} color //Hex value
  * @param {string} text 
- * @param {String} textColor //Hex Value
+ * @param {string} textColor //Hex Value
  * @returns an instances of a shape object
  */
 function GenerateShape(shape, color, text, textColor) {
