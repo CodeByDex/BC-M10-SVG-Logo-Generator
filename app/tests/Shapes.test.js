@@ -30,8 +30,9 @@ describe("Circle Tests", () => {
         expect(shape.renderText(xPos, yPos).replaceAll(" ", "")).toEqual(`<text 
         x="10" 
         y="20"
-        fount-size="60"
+        font-size="0.5"
         text-anchor="middle"
+        dominant-baseline="middle"
         fill="${textColor}">
         ${text}
         </text>`.replaceAll(" ", ""));
