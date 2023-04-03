@@ -1,0 +1,22 @@
+<svg version="1.1" 
+    width="300" 
+    height="200" 
+    xmlns="http://www.w3.org/2000/svg">
+    
+    <polygon 
+        points="15, 190 150, 10 285, 190"
+        fill="#000000"
+        />
+
+        <text 
+        x="150" 
+        y="100"
+        font-size="56.25"
+        text-anchor="middle"
+        dominant-baseline="middle"
+        fill="#008000">
+        SVG
+        </text>
+        
+    
+    </svg>
